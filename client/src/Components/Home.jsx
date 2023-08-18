@@ -1,9 +1,9 @@
 /* eslint-disable */
-import React, { useState } from "react";
+import { useState } from "react";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: "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",
   dangerouslyAllowBrowser: true,
 });
 
@@ -19,7 +19,7 @@ function Home() {
           {
             role: "system",
             content:
-              "if I like the book, artist, song, movie, tv show or video game. Give me a 100 character recommendation of something else I would like. if I give you a word that doesn't exist, tell me to try again. I want the answer to be structured as follows: IF YOU LIKE: YOU WILL LIKE: ",
+              "if I like the book, artist, song, movie, tv show or video game. Give me a 300 character recommendation of something else I would like. if I give you a word that doesn't exist, tell me to try again. ",
           },
           {
             role: "user",

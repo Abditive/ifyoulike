@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { BrowserRouter, Route, Routes, Link, NavLink } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
@@ -7,6 +7,7 @@ import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
+import Profile from "./Components/Profile";
 
 function App() {
   let [username, setUsername] = useState("");
@@ -48,6 +49,7 @@ function App() {
             element={<LoginForm onLogin={handleLogin} />}
           ></Route>
           <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/profile" element={<Profile user={username} />} />
         </Routes>
       </BrowserRouter>
     </>

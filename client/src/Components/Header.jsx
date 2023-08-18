@@ -1,9 +1,13 @@
 /* eslint-disable */
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { BrowserRouter, Route, Routes, Link, NavLink } from "react-router-dom";
+
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Header(props) {
+  const navigate = useNavigate();
+  function logOutRedirect() {
+    props.onLogout();
+    navigate("/");
+  }
   return (
     <header>
       <nav>
@@ -12,7 +16,7 @@ function Header(props) {
           {props.user ? (
             <>
               <h2>Welcome back, {props.user}</h2>
-              <button onClick={props.onLogout}>Log Out </button>
+              <button onClick={logOutRedirect}>Log Out </button>
               <Link to="/profile">
                 <button>Profile</button>
               </Link>
@@ -22,19 +26,21 @@ function Header(props) {
               <Link to="/login">
                 <button>Log In</button>
               </Link>
-
               <Link to="/signup">
-                <button>Want to save your preferences? Sign Up</button>
+                <button> Sign Up</button>
               </Link>
             </>
           )}
 
           <NavLink to="/">
-            <h4>Home</h4>
+            <button>Get Suggestion</button>
           </NavLink>
           <NavLink to="/about">
-            <h4>About</h4>
+            <button>About</button>
           </NavLink>
+          <Link to="/signup">
+            <button> Sign Up</button>
+          </Link>
         </ul>
       </nav>
     </header>

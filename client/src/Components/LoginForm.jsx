@@ -1,10 +1,12 @@
 /* eslint-disable */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -22,18 +24,19 @@ function LoginForm(props) {
       const response = await axios.post("/api/session", data);
       props.onLogin(data.email);
       console.log("Log In successful:", response.data);
+      navigate("/profile");
     } catch (error) {
       console.error("Signup failed:", error);
     }
   };
   return (
-    <div>
-      <p> Login Form </p>
+    <div className="login-form">
+      <h2> Login Now</h2>
       <form onSubmit={handleSubmit}>
-        <label>email</label>
+        <label>Email</label>
         <input type="text" onChange={handleEmailChange} />
-        <label>password</label>
-        <input type="text" onChange={handlePassChange} />
+        <label>Password</label>
+        <input type="password" onChange={handlePassChange} />
         <input type="submit" />
       </form>
     </div>

@@ -23,14 +23,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -38,17 +30,18 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
+  margin: 0.2em;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #05e6c1a4;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ffffff;
 }
 button:focus,
 button:focus-visible {
@@ -66,4 +59,46 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+input[type="text"],
+input[type="password"] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  border-radius: 8px;
+  border: 2px solid transparent;
+  margin: 0.2em;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #05e6c1a4;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+input[type="submit"]:hover {
+  border-color: #ffffff;
+}
+input[type="submit"]:focus,
+input[type="submit"]:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+.registration-form {
+  margin: auto;
+  width: 50%;
+  background-color: #302f2f;
+  border-radius: 10px;
+}
+.login-form {
+  margin: auto;
+  width: 50%;
+  background-color: #302f2f;
+  border-radius: 10px;
 }
