@@ -2,7 +2,7 @@ const express = require("express");
 router = express.Router();
 
 const { MongoClient } = require("mongodb");
-const mongoClient = new MongoClient("mongodb://127.0.0.1:27017/");
+const mongoClient = new MongoClient(process.env.MONGO_DB_CONNECTION_STRING);
 let db;
 let usersCollection;
 
