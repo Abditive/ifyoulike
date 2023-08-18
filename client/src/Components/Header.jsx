@@ -1,25 +1,40 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BrowserRouter, Route, Routes, Link, NavLink } from "react-router-dom";
 
 function Header(props) {
   return (
     <header>
-      <h1>My Website</h1>
       <nav>
+        <h1>IFYOULIKE__</h1>
         <ul>
-          <li>Hello {props.user}</li>
+          {props.user ? (
+            <>
+              <h2>Welcome back, {props.user}</h2>
+              <button onClick={props.onLogout}>Log Out </button>
+              <Link to="/profile">
+                <button>Profile</button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button>Log In</button>
+              </Link>
 
-          <button onClick={props.onLogout}>Log Out </button>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/about">About</a>
-          </li>
-          <li>
-            <a href="/contact">Contact</a>
-          </li>
+              <Link to="/signup">
+                <button>Want to save your preferences? Sign Up</button>
+              </Link>
+            </>
+          )}
+
+          <NavLink to="/">
+            <h4>Home</h4>
+          </NavLink>
+          <NavLink to="/about">
+            <h4>About</h4>
+          </NavLink>
         </ul>
       </nav>
     </header>

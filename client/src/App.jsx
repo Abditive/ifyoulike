@@ -1,10 +1,12 @@
 /* eslint-disable */
+import { BrowserRouter, Route, Routes, Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
 import Header from "./Components/Header";
+import Home from "./Components/Home";
 
 function App() {
   let [username, setUsername] = useState("");
@@ -37,9 +39,17 @@ function App() {
 
   return (
     <>
-      <Header user={username} onLogout={handleLogout}></Header>
-      <SignUpForm></SignUpForm>
-      <LoginForm onLogin={handleLogin}></LoginForm>
+      <BrowserRouter>
+        <Header user={username} onLogout={handleLogout}></Header>
+        <Routes>
+          <Route path="/" element={<Home></Home>} />
+          <Route
+            path="/login"
+            element={<LoginForm onLogin={handleLogin} />}
+          ></Route>
+          <Route path="/signup" element={<SignUpForm />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
