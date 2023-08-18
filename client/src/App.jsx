@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
@@ -41,9 +41,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header user={username} onLogout={handleLogout}></Header>
+        <Header user={username} onLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<Home></Home>} />
+          <Route path="/" element={<Home user={username} />} />
           <Route
             path="/login"
             element={<LoginForm onLogin={handleLogin} />}

@@ -90,14 +90,23 @@ input[type="submit"]:focus,
 input[type="submit"]:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-.registration-form {
+.registration-form,
+.login-form {
   margin: auto;
   width: 50%;
   background-color: #302f2f;
   border-radius: 10px;
 }
-.login-form {
+.recommendation-box {
+  font-size: 1.5em;
   margin: auto;
+  width: 100%;
+  background-color: #302f2f;
+  border-radius: 10px;
+}
+.recommendation-history {
+  font-size: 1em;
+  margin: 10px auto;
   width: 50%;
   background-color: #302f2f;
   border-radius: 10px;

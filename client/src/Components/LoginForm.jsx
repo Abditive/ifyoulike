@@ -14,7 +14,7 @@ function LoginForm(props) {
   const handlePassChange = (event) => {
     setPassword(event.target.value);
   };
-  const handleSubmit = async (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
     const data = {
       email: email,
@@ -26,9 +26,9 @@ function LoginForm(props) {
       console.log("Log In successful:", response.data);
       navigate("/profile");
     } catch (error) {
-      console.error("Signup failed:", error);
+      console.error("Log In failed:", error);
     }
-  };
+  }
   return (
     <div className="login-form">
       <h2> Login Now</h2>

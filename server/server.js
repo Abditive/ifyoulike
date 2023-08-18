@@ -24,6 +24,9 @@ app.use("/api/users", usersController);
 const sessionController = require("./controllers/session.js");
 app.use("/api/session", sessionController);
 
+const profileController = require("./controllers/profile.js");
+app.use("/api/profile", profileController);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

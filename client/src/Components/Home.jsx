@@ -1,17 +1,34 @@
 /* eslint-disable */
 import { useState } from "react";
 import OpenAI from "openai";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: import.meta.env.VITE_API_KEY,
   dangerouslyAllowBrowser: true,
 });
 
-function Home() {
+function Home(props) {
   const [input, setInput] = useState("");
   const [recommendation, setRecommendation] = useState("");
+  const navigate = useNavigate();
+  async function saveToProfile() {
+    console.log("saved to profile");
+    const data = {
+      user_email: props.user,
+      saved_recommendation: recommendation,
+    };
+    try {
+      const response = await axios.post("/api/profile", data);
 
-  const fetchRecommendation = async () => {
+      console.log("Saved successful:", response.data);
+      navigate("/profile");
+    } catch (error) {
+      console.error("Save failed:", error);
+    }
+  }
+  async function fetchRecommendation() {
     try {
       const chatCompletion = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
@@ -29,9 +46,9 @@ function Home() {
       });
       setRecommendation(chatCompletion.choices[0].message.content);
     } catch (error) {
-      console.error("Error fetching recommendation:", error);
+      console.error("Error", error);
     }
-  };
+  }
 
   return (
     <div>
@@ -41,8 +58,17 @@ function Home() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button onClick={fetchRecommendation}>Get Recommendation</button>
-      {recommendation && <p>{recommendation}</p>}
+      <button onClick={fetchRecommendation}>Tell me!</button>
+      <div className="recommendation-box">
+        {recommendation && <p>{recommendation}</p>}
+      </div>
+      {props.user && recommendation !== "" ? (
+        <>
+          <button onClick={saveToProfile}>Save Recommendation</button>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

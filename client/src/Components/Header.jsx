@@ -13,9 +13,15 @@ function Header(props) {
       <nav>
         <h1>IFYOULIKE__</h1>
         <ul>
+          <NavLink to="/">
+            <button>Give me a recommendation!</button>
+          </NavLink>
+          <NavLink to="/about">
+            <button>About</button>
+          </NavLink>
           {props.user ? (
             <>
-              <h2>Welcome back, {props.user}</h2>
+              <p>Welcome back, {props.user}</p>
               <button onClick={logOutRedirect}>Log Out </button>
               <Link to="/profile">
                 <button>Profile</button>
@@ -31,16 +37,6 @@ function Header(props) {
               </Link>
             </>
           )}
-
-          <NavLink to="/">
-            <button>Get Suggestion</button>
-          </NavLink>
-          <NavLink to="/about">
-            <button>About</button>
-          </NavLink>
-          <Link to="/signup">
-            <button> Sign Up</button>
-          </Link>
         </ul>
       </nav>
     </header>

@@ -9,17 +9,12 @@ mongoClient
   .connect()
   .then((_) => {
     const db = mongoClient.db("ifyoulike");
-    db.dropCollection("profile");
+    // db.dropCollection("profile");
     profileCollection = db.collection("profile");
     profileCollection.insertMany([
       {
-        user_id: "64dea5e3b1fa484324f56f11",
-        watched_movies: [
-          { movie_title: "", date_watched: "", review: "", liked: true },
-        ],
-        watched_tv: [
-          { show_title: "", date_watched: "", review: "", liked: true },
-        ],
+        user_email: "andreina@gmail.com",
+        saved_recommendation: "hello",
       },
     ]);
   })
@@ -28,7 +23,7 @@ mongoClient
   });
 
 router.use("*", (request, response, next) => {
-  if (request.method !== "GET" && !request.session.name) {
+  if (request.method !== "GET" && !request.session.email) {
     response
       .status(401)
       .json({ message: "must be logged in to perform this action" });
@@ -37,3 +32,26 @@ router.use("*", (request, response, next) => {
 
   next();
 });
+
+// GET saved recommendations
+router.get("/", (request, response) => {
+  console.log(request.session.email);
+  profileCollection
+    .find({ user_email: request.session.email })
+    .toArray()
+    .then((recom) => {
+      response.json(recom);
+    })
+    .catch((err) => console.error(err));
+});
+
+// POST recommendations
+router.post("/", (request, response) => {
+  profileCollection
+    .insertOne(request.body)
+    .then((_) => {
+      response.json({ message: "inserted recom" });
+    })
+    .catch((err) => console.error(err));
+});
+module.exports = router;
