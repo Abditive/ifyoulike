@@ -1,6 +1,6 @@
 # ifyoulike\_
 
-ifyoulike* is a recommendation engine leveraging the power of the OpenAI API to provide suggestions based on user preferences. Whether you're exploring new interests or expanding on current ones, ifyoulike* is here to guide your journey.
+ifyoulike* is a recommendation engine leveraging the power of the OpenAI API to provide suggestions based on user preferences. Whether you're exploring new entertainment genres or expanding on current ones, ifyoulike* is here to guide your journey.
 
 ## Features
 
@@ -74,5 +74,3 @@ ifyoulike* is a recommendation engine leveraging the power of the OpenAI API to 
 This project is licensed under the MIT License - see the `LICENSE.md` file for details.
 
 ---
-
-Feel free to customize this README further as per your project's requirements. I also recommend adding sections like 'Future Improvements', 'Known Issues', and 'Credits' if needed.
