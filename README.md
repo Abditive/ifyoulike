@@ -1,11 +1,18 @@
 # ifyoulike
 
 ifyoulike* is a recommendation engine leveraging the power of the OpenAI API to provide suggestions based on user preferences. Whether you're exploring new entertainment genres or expanding on current ones, ifyoulike* is here to guide your journey.
-![Alt text](image.png)
+Try
+
+[Try it here!](https://ifyoulike-front.onrender.com/)
+
+![Image of home page](image.png)
 
 ## Features
 
 - **Get Recommendations**: Users can receive suggestions without any account.
+
+![Alt text](image-1.png)
+
 - **Save Past Recommendations**: Create an account to save and revisit your past recommendations anytime.
 
 ## Technology Stack
