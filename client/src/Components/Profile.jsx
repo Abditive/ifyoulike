@@ -7,7 +7,7 @@ function Profile(props) {
 
   useEffect(() => {
     axios
-      .get("/api/profile")
+      .get("https://ifyoulike.onrender.com/api/profile")
       .then((response) => {
         setProfileData(response.data);
         // Log each saved_recommendation
