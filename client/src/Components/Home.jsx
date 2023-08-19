@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_API_KEY,
+  dangerouslyAllowBrowser: true,
 });
 
 function Home(props) {
