@@ -22,16 +22,16 @@ mongoClient
     console.log(error);
   });
 
-// router.use("*", (request, response, next) => {
-//   if (request.method !== "GET" && !request.session.email) {
-//     response
-//       .status(401)
-//       .json({ message: "must be logged in to perform this action" });
-//     return;
-//   }
+router.use("*", (request, response, next) => {
+  if (request.method !== "GET" && !request.session.email) {
+    response
+      .status(401)
+      .json({ message: "must be logged in to perform this action" });
+    return;
+  }
 
-//   next();
-// });
+  next();
+});
 
 // GET saved recommendations
 router.get("/", (request, response) => {

@@ -39,7 +39,6 @@ router.post("/", (request, response) => {
       return;
     }
 
-    request.session.name = user.name;
     request.session.email = user.email;
 
     response.json({ message: "logged in successfully" });
