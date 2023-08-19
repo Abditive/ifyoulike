@@ -1,6 +1,7 @@
-# ifyoulike\_
+# ifyoulike
 
 ifyoulike* is a recommendation engine leveraging the power of the OpenAI API to provide suggestions based on user preferences. Whether you're exploring new entertainment genres or expanding on current ones, ifyoulike* is here to guide your journey.
+![Alt text](image.png)
 
 ## Features
 
