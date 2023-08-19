@@ -26,10 +26,7 @@ function SignUpForm() {
       password: password,
     };
     try {
-      const response = await axios.post(
-        "https://ifyoulike.onrender.com/api/users",
-        data
-      );
+      const response = await axios.post("/api/users", data);
       navigate("/login");
       console.log("Signup successful:", response.data);
     } catch (error) {

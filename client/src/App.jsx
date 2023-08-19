@@ -14,7 +14,7 @@ function App() {
 
   const handleLogout = () => {
     axios
-      .delete("https://ifyoulike.onrender.com/api/session")
+      .delete("/api/session")
       .then(() => {
         console.log("Logged out successfully!");
         setUsername("");
@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://ifyoulike.onrender.com/api/session")
+      .get("/api/session")
       .then((response) => {
         setUsername(response.data.email);
       })

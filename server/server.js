@@ -1,4 +1,4 @@
-const cors = require("cors");
+// const cors = require("cors");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
@@ -9,15 +9,18 @@ require("dotenv").config();
 const MongoStore = require("connect-mongo");
 const expressSession = require("express-session");
 
-app.use(
-  cors({
-    origin: "https://ifyoulike-front.onrender.com",
-    credentials: true,
-  })
-);
+app.use(express.static("../client/dist"));
 
-app.options("*", cors());
-app.set("trust proxy", 1);
+// app.use(
+//   cors({
+//     origin: "https://ifyoulike-front.onrender.com",
+//     credentials: true,
+//   })
+// );
+
+// app.options("*", cors());
+// app.set("trust proxy", 1);
+
 app.use(
   expressSession({
     store: MongoStore.create({
@@ -25,11 +28,6 @@ app.use(
       dbName: "ifyoulike",
     }),
     secret: process.env.EXPRESS_SESSION_SECRET_KEY,
-    cookie: {
-      secure: true, // required for cookies to work on HTTPS
-      httpOnly: false,
-      sameSite: "none",
-    },
   })
 );
 

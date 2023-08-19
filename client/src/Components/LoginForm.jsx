@@ -21,10 +21,7 @@ function LoginForm(props) {
       password: password,
     };
     try {
-      const response = await axios.post(
-        "https://ifyoulike.onrender.com/api/session",
-        data
-      );
+      const response = await axios.post("/api/session", data);
       props.onLogin(data.email);
       console.log("Log In successful:", response.data);
       navigate("/profile");

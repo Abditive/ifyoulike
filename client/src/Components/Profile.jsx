@@ -7,7 +7,7 @@ function Profile(props) {
 
   function handleDelete(id) {
     axios
-      .delete(`https://ifyoulike.onrender.com/api/profile/${id}`)
+      .delete(`/api/profile/${id}`)
       .then(() => {
         const updatedProfileData = profileData.filter(
           (item) => item._id !== id
@@ -20,7 +20,7 @@ function Profile(props) {
   }
   useEffect(() => {
     axios
-      .get("https://ifyoulike.onrender.com/api/profile")
+      .get("/api/profile")
       .then((response) => {
         setProfileData(response.data);
         console.log("inner" + response.data);
