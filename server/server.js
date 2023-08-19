@@ -17,7 +17,7 @@ app.use(
 );
 
 app.options("*", cors());
-
+app.set("trust proxy", 1);
 app.use(
   expressSession({
     store: MongoStore.create({
