@@ -8,7 +8,6 @@ import SignUpForm from "./Components/SignUpForm";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Profile from "./Components/Profile";
-axios.method("url", { withCredentials: true });
 
 function App() {
   let [username, setUsername] = useState("");
