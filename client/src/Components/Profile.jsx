@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+axios.method("url", { withCredentials: true });
 function Profile(props) {
   const [profileData, setProfileData] = useState([]);
 
