@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("/api/session")
+      .get("https://ifyoulike.onrender.com/api/session")
       .then((response) => {
         setUsername(response.data.email);
       })
