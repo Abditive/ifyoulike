@@ -25,6 +25,11 @@ app.use(
       dbName: "ifyoulike",
     }),
     secret: process.env.EXPRESS_SESSION_SECRET_KEY,
+    cookie: {
+      secure: true, // required for cookies to work on HTTPS
+      httpOnly: false,
+      sameSite: "none",
+    },
   })
 );
 
