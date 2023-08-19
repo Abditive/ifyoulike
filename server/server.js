@@ -12,6 +12,7 @@ const expressSession = require("express-session");
 app.use(
   cors({
     origin: "https://ifyoulike-front.onrender.com",
+    credentials: true,
   })
 );
 
