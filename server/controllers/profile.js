@@ -54,4 +54,15 @@ router.post("/", (request, response) => {
     })
     .catch((err) => console.error(err));
 });
+
+// DELETE recommendation
+router.delete("/:recommendationId", (request, response) => {
+  profileCollection
+    .deleteOne({ _id: new ObjectId(request.params.recommendationId) })
+    .then((_) => {
+      response.json({ message: "Recommendation deleted successfully." });
+    })
+    .catch((err) => console.error(err));
+});
+
 module.exports = router;

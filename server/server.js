@@ -16,6 +16,7 @@ app.use(
 );
 
 app.options("*", cors());
+
 app.use(
   expressSession({
     store: MongoStore.create({

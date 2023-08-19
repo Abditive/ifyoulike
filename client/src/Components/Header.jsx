@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header(props) {
   const navigate = useNavigate();
@@ -13,12 +13,10 @@ function Header(props) {
       <nav>
         <h1>IFYOULIKE__</h1>
         <ul>
-          <NavLink to="/">
+          <Link to="/">
             <button>Give me a recommendation!</button>
-          </NavLink>
-          <NavLink to="/about">
-            <button>About</button>
-          </NavLink>
+          </Link>
+
           {props.user ? (
             <>
               <p>Welcome back, {props.user}</p>
