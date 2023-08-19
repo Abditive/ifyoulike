@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
@@ -8,6 +9,13 @@ require("dotenv").config();
 const MongoStore = require("connect-mongo");
 const expressSession = require("express-session");
 
+app.use(
+  cors({
+    origin: "https://ifyoulike-front.onrender.com",
+  })
+);
+
+app.options("*", cors());
 app.use(
   expressSession({
     store: MongoStore.create({

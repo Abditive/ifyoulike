@@ -14,7 +14,7 @@ function App() {
 
   const handleLogout = () => {
     axios
-      .delete("/api/session")
+      .delete("https://ifyoulike.onrender.com/api/session")
       .then(() => {
         console.log("Logged out successfully!");
         setUsername("");

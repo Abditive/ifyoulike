@@ -21,7 +21,10 @@ function LoginForm(props) {
       password: password,
     };
     try {
-      const response = await axios.post("/api/session", data);
+      const response = await axios.post(
+        "https://ifyoulike.onrender.com/api/session",
+        data
+      );
       props.onLogin(data.email);
       console.log("Log In successful:", response.data);
       navigate("/profile");
@@ -32,7 +35,7 @@ function LoginForm(props) {
   return (
     <div className="login-form">
       <h2> Login Now</h2>
-      <form onSubmit={handleSubmit}>
+      <form data-testid="login-form" onSubmit={handleSubmit}>
         <label>Email</label>
         <input type="text" onChange={handleEmailChange} />
         <label>Password</label>

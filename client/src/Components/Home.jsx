@@ -20,7 +20,10 @@ function Home(props) {
       saved_recommendation: recommendation,
     };
     try {
-      const response = await axios.post("/api/profile", data);
+      const response = await axios.post(
+        "https://ifyoulike.onrender.com/api/profile",
+        data
+      );
 
       console.log("Saved successful:", response.data);
       navigate("/profile");
