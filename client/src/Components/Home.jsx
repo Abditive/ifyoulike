@@ -1,20 +1,15 @@
 /* eslint-disable */
-import { useState } from "react";
-import OpenAI from "openai";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
 
 function Home(props) {
   const [input, setInput] = useState("");
   const [recommendation, setRecommendation] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   async function saveToProfile() {
-    console.log("saved to profile");
     const data = {
       user_email: props.user,
       saved_recommendation: recommendation,
@@ -28,25 +23,21 @@ function Home(props) {
       console.error("Save failed:", error);
     }
   }
+
   async function fetchRecommendation() {
+    const data = {
+      input: input,
+    };
+    setLoading(true);
     try {
-      const chatCompletion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content:
-              "if I like the book, artist, song, movie, tv show or video game. Give me a 300 character recommendation of something else I would like. if I give you a word that doesn't exist, tell me to try again. ",
-          },
-          {
-            role: "user",
-            content: input,
-          },
-        ],
-      });
-      setRecommendation(chatCompletion.choices[0].message.content);
+      let res = await axios.post("/api/recommendation", data);
+
+      setRecommendation(res.data);
+      console.log("Recommendation:", res.data);
     } catch (error) {
-      console.error("Error", error);
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -60,7 +51,11 @@ function Home(props) {
       />
       <button onClick={fetchRecommendation}>Tell me!</button>
       <div className="recommendation-box">
-        {recommendation && <p>{recommendation}</p>}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          recommendation && <p>{recommendation}</p>
+        )}
       </div>
       {props.user && recommendation !== "" ? (
         <>

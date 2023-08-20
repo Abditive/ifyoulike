@@ -1,4 +1,3 @@
-// const cors = require("cors");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,16 +9,6 @@ const MongoStore = require("connect-mongo");
 const expressSession = require("express-session");
 
 app.use(express.static("../client/dist"));
-
-// app.use(
-//   cors({
-//     origin: "https://ifyoulike-front.onrender.com",
-//     credentials: true,
-//   })
-// );
-
-// app.options("*", cors());
-// app.set("trust proxy", 1);
 
 app.use(
   expressSession({
@@ -39,6 +28,9 @@ app.use("/api/session", sessionController);
 
 const profileController = require("./controllers/profile.js");
 app.use("/api/profile", profileController);
+
+const recomController = require("./controllers/recommendation.js");
+app.use("/api/recommendation", recomController);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

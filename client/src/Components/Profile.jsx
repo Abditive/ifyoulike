@@ -24,11 +24,6 @@ function Profile(props) {
       .then((response) => {
         setProfileData(response.data);
         console.log("inner" + response.data);
-
-        for (let item of response.data) {
-          console.log(item.saved_recommendation);
-          console.log(item._id);
-        }
       })
       .catch((error) => {
         console.error("Error fetching profile data:", error);
